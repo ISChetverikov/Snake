@@ -19,14 +19,11 @@ namespace Snake
 
     public sealed class SendDirectionRequest : ICommand
     {
-        Client _client;
-        string _token;
-        
-
-        public SendDirectionRequest(Client client, string token)
+        Model _model;
+      
+        public SendDirectionRequest(Model model)
         {
-            _client = client;
-            _token = token;
+            _model = model;
         }
 
         public event EventHandler CanExecuteChanged;
@@ -38,7 +35,7 @@ namespace Snake
 
         public async void Execute(object parameter)
         {
-             await _client.SendDirectionRequestAsync((string)parameter, _token);
+             await _model.SendDirectionRequestAsync((string)parameter);
         }
     }
 
@@ -48,19 +45,15 @@ namespace Snake
         const int height = 550;
         int _step = 0;
         int _roundNumber = 0;
-        string _name = "Беспечный Едок";
-
+        
         public int _width = 0;
         ObservableCollection<ObservableRectangle> _rectangles;
         ObservableCollection<ObservableRectangle> _wallsRectangles;
+        Model _model = new Model();
 
         int _height = 0;
         System.Windows.Threading.DispatcherTimer dispatcherTimer;
-
-        const string _url = "http://safeboard.northeurope.cloudapp.azure.com";
-        const string _token = "r_-0wJ$8PqCo.=3mH{Ap";
-        Client _client;
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand DirectionCommand { get; set; }
 
@@ -106,9 +99,9 @@ namespace Snake
 
         public MainWindowViewModel()
         {
-            _client = new Client(_url);
+            
             _rectangles = new ObservableCollection<ObservableRectangle>();
-            DirectionCommand = new SendDirectionRequest(_client, _token);
+            DirectionCommand = new SendDirectionRequest(_model);
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(GetGameState);
@@ -120,7 +113,7 @@ namespace Snake
         private void GetGameState(object sender, EventArgs e)
         {
             
-            var g = _client.GetGameStateResponseAsync().ContinueWith((antecedent) =>
+            var g = _model.GetGameStateResponseAsync().ContinueWith((antecedent) =>
             {
                 
                 var gameState = antecedent.Result;
@@ -194,7 +187,7 @@ namespace Snake
                         var brush = Brushes.Red;
                         if (player.IsSpawnProtected)
                             brush = Brushes.White;
-                        if (player.Name == _name)
+                        if (player.Name == _model.Name)
                             brush = Brushes.Aqua;
 
                         r.Add(new ObservableRectangle

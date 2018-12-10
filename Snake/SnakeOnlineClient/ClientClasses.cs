@@ -6,14 +6,6 @@ using System.Threading.Tasks;
 
 namespace SnakeOnlineClient
 {
-    public enum Direction
-    {
-        Left = 0,
-        Top = 1,
-        Right = 2,
-        Bottom = 3
-    }
-
     public sealed class NameResponse
     {
         public string Name { get; set; }

@@ -60,7 +60,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="SnakeOnlineClient\Classes.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="SnakeOnlineClient\ClientClasses.cs" />
     <Compile Include="SnakeOnlineClient\Client.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
