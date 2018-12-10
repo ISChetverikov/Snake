@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs/Snake/v15
+/packages/RestSharp.106.5.4
+/ServerTest/obj/Debug
+/ServerTest/bin/Debug
+/Snake/bin/Debug
+/Snake/obj/Debug
+/ServerTest
