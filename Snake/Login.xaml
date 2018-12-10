@@ -2,16 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snake"
         mc:Ignorable="d"
         Title="Login" Height="179.175" Width="311.34">
-    <Grid Background="#2d2d30" Margin="0,0,0,-10">
-        <TextBox HorizontalAlignment="Left" Background="#1b1b1c" Foreground="White" Height="23" Margin="78,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="210"/>
-        <TextBox HorizontalAlignment="Left" Background="#1b1b1c" Foreground="White" Height="23" Margin="78,63,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="210"/>
+    
+    <Grid Background="#2d2d30" Margin="0,0,0,-1">
+        <TextBox Name="serverBox" HorizontalAlignment="Left" Background="#1b1b1c" Foreground="White" Height="23" Margin="78,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210"/>
+        <TextBox Name="tokenBox" HorizontalAlignment="Left" Background="#1b1b1c" Foreground="White" Height="23" Margin="78,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="210"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="63" TextAlignment="Center" Text="Server" />
         <TextBlock HorizontalAlignment="Left" Margin="10,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="63" TextAlignment="Center" Text="Token" />
-        <Button Content="OK" Background="#1b1b1c" Foreground="White" HorizontalAlignment="Left" Margin="213,104,0,0" VerticalAlignment="Top" Width="75" Click="{Binding Button_CLick}"/>
+
+        <Button Content="OK" Background="#1b1b1c" Foreground="White" HorizontalAlignment="Left" Margin="213,104,0,0" VerticalAlignment="Top" Width="75" Command="{Binding SendNameRequest}" CommandParameter="{Binding Text, ElementName=tokenBox}">
+        </Button>
 
     </Grid>
 </Window>

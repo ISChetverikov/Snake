@@ -28,7 +28,7 @@ namespace Snake
         ObservableCollection<ObservableRectangle> _rectangles;
         ObservableCollection<ObservableRectangle> _wallsRectangles;
         Model _model = new Model();
-
+        
         int _height = 0;
         System.Windows.Threading.DispatcherTimer dispatcherTimer;
         

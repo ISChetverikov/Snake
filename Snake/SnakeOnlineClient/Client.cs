@@ -29,12 +29,12 @@ namespace SnakeOnlineClient
             return response.Data.Name;
         }
 
-        public async Task<string> GetNameAsync(string token)
+        public async Task<NameResponse> GetNameAsync(string token)
         {
             var request = new RestRequest("api/Player/name");
             request.AddQueryParameter("token", token);
             var response = await _httpClient.ExecuteGetTaskAsync<NameResponse>(request);
-            return response.Data.Name;
+            return response.Data;
         }
 
         public async Task<GameStateResponse> GetGameStateResponseAsync()

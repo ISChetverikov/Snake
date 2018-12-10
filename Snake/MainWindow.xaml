@@ -40,5 +40,6 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <TextBlock HorizontalAlignment="Left" Foreground="Aqua"  Margin="822,30,0,0" TextWrapping="Wrap" Text="Беспечный Едок" VerticalAlignment="Top" Height="23" Width="155" FontSize="20" TextAlignment="Right"/>
     </Grid>
 </Window>
