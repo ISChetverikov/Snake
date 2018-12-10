@@ -29,10 +29,12 @@ namespace Snake
         {
             _client = new Client(_url);
         }
-        
-        public async Task<string> GetNameAsync()
+
+        public async Task<string> GetNameAsync(string token)
         {
-            return await _client.GetNameAsync(_token);
+            Task<string> task = await _client.GetNameAsync(_token);
+            task.
+            return task;
         }
 
         public async Task<GameStateResponse> GetGameStateResponseAsync()

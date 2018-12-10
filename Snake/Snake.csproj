@@ -59,10 +59,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginWindowViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="Model.cs" />
+    <Compile Include="SendDirectionRequest.cs" />
+    <Compile Include="SendNameRequest.cs" />
+    <Compile Include="ShowLoginWindow.cs" />
     <Compile Include="SnakeOnlineClient\ClientClasses.cs" />
     <Compile Include="SnakeOnlineClient\Client.cs" />
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

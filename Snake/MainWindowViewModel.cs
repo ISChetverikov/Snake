@@ -16,29 +16,7 @@ namespace Snake
     {
         public Brush Color { get; set; }
     }
-
-    public sealed class SendDirectionRequest : ICommand
-    {
-        Model _model;
-      
-        public SendDirectionRequest(Model model)
-        {
-            _model = model;
-        }
-
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public async void Execute(object parameter)
-        {
-             await _model.SendDirectionRequestAsync((string)parameter);
-        }
-    }
-
+    
     class MainWindowViewModel : INotifyPropertyChanged
     {
         const int width = 800;
@@ -56,6 +34,7 @@ namespace Snake
         
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand DirectionCommand { get; set; }
+        public ICommand ShowLoginWindow { get; set; }
 
         public ObservableCollection<ObservableRectangle> Rectangles
         {
@@ -95,13 +74,13 @@ namespace Snake
                 PropertyChanged(this, new PropertyChangedEventArgs(nameof(CellHeight)));
             }
         }
-
-
+        
         public MainWindowViewModel()
         {
             
             _rectangles = new ObservableCollection<ObservableRectangle>();
             DirectionCommand = new SendDirectionRequest(_model);
+            ShowLoginWindow = new ShowLoginWindow();
 
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(GetGameState);
