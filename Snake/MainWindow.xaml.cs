@@ -26,5 +26,6 @@ namespace Snake
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
         }
+        
     }
 }
